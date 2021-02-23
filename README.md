@@ -1,4 +1,4 @@
-# TIM_barrel
+# DeCatCounter
 
 # XXX
 This is the README document for the XXX pipeline for pre-processing concatenated PacBio reads from _in vitro_ selection experiments. The pipeline can be used to process nucleotides or amino acids sequencing data.
