@@ -2,10 +2,9 @@
 
 # This is DeCatCounter, a DeconCatenator and Counter for CCS sequencing data
 
-# by Sam Verbanic and Celia Blanco
-# contact: samuel.verbanic@lifesci.ucsb.edu or cblanco@chem.ucsb.edu
+# by Celia Blanco
+# contact: celiablanco@ucla.edu
 # Dependencies:
-	# pandaseq
 	# python
 
 from __future__ import print_function
