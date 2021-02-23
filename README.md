@@ -1,12 +1,24 @@
 # DeCatCounter
 
-# XXX
-This is the README document for the XXX pipeline for pre-processing concatenated PacBio reads from _in vitro_ selection experiments. The pipeline can be used to process nucleotides or amino acids sequencing data.
+This is the README document for DeCatCounter, a pipeline for processing concatenated PacBio reads from _in vitro_ selection experiments. The pipeline can be used to process nucleotides or amino acids sequencing data.
 
 # Usage
 
-Please consult the XXX [manual] (link). 
-`XXX.py input_file barcodes.txt barc_tol_f barc_tol_r adapters.txt adap_tol_f adap_tol_r
+To use the pipeline, 
+`DeCatCounter.py input_file barcodes.txt barc_tol_f barc_tol_r adapters.txt adap_tol_f adap_tol_r translation(y/n) low_len hi_len
+
+![sequences](sequences.png)
+
+input_file: name of input file (must include the full path to the directory where it's located).
+barcodes.txt: text file with 3 columns: 1) sample name, 2)corresponding forward barcode, 3) reverse barcode.
+bc_tol_f: error tolerance for forward barcode search in the forward reads(for the reverse reads, this is the error tolerance for the rC of the reverse barcode).
+bc_tol_r: error tolerance for reverse barcode search.
+adapters.txt: text file with 2 lines: 1) forward adapter, 2) reverse adapter.
+ad_tol_f: error tolerance for forward adapter search.
+ad_tol_r: error tolerance for reverse adapter search.
+translation(y/n): whether translation to amino acids should be performed, value should be either y or n. 
+low_len: minimum length for final variants.
+hi_len: maximum length for final variants.
 
 # Dependencies
 The pipeline script was written to run on Unix-based systems, like Linux, Ubuntu, and MacOS. Windows 10 also has a [Linux subsystem](https://docs.microsoft.com/en-us/windows/wsl/faq).
