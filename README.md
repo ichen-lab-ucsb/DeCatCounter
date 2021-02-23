@@ -5,7 +5,7 @@ This is the README document for DeCatCounter, a pipeline for processing concaten
 # Usage
 
 To use the pipeline, 
-`DeCatCounter.py input_file barcodes.txt barc_tol_f barc_tol_r adapters.txt adap_tol_f adap_tol_r translation(y/n) low_len hi_len
+`DeCatCounter.py input_file barcodes.txt barc_tol_f barc_tol_r adapters.txt adap_tol_f adap_tol_r translation(y/n) low_len hi_len`
 
 ![sequences](sequences.png)
 
