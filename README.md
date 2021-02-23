@@ -6,7 +6,7 @@ This is the README document for DeCatCounter, a pipeline for processing concaten
 
 To use the pipeline, type in the terminal:
 
-`DeCatCounter.py input_file barcodes.txt barc_tol_f barc_tol_r adapters.txt adap_tol_f adap_tol_r translation(y/n) low_len hi_len`
+`python DeCatCounter.py input_file barcodes.txt barc_tol_f barc_tol_r adapters.txt adap_tol_f adap_tol_r translation(y/n) low_len hi_len`
 
 ![sequences](sequences.png)
 
@@ -21,6 +21,10 @@ To use the pipeline, type in the terminal:
 * low_len: minimum length for final variants.
 * hi_len: maximum length for final variants.
 
+# ADD EXAMPLE OF BARCODE AND ADAPTER TEXT FILES!!!!!!!
+# ADD OUTPUT FOR EXAMPLE
+# MENTION STOP CODON 
+
 # Dependencies
 The pipeline script was written to run on Unix-based systems, like Linux, Ubuntu, and MacOS. Windows 10 also has a [Linux subsystem](https://docs.microsoft.com/en-us/windows/wsl/faq).
 
@@ -28,14 +32,13 @@ To use the pipeline, first install [Python](https://www.python.org/downloads/). 
 
 In order for the pipeline to be called from any directory and for the pipeline to call the translator reliably, both scripts must be placed in a directory that is in the user's PATH environment variable upon download. For example, for Unix/Linux users, scripts could be placed in `/usr/local/bin/` upon download. These files can be placed in that directory with the command:
 
-`cp /path/to/pipeline.sh /path/to/translator.py /usr/local/bin/` 
+`cp /path/to/pipeline.sh /usr/local/bin/` 
 
-XXX and the translation tool must be made executable. This can be done by entering the following commands from the local directory where they are stored:
+DeCatCounter must be made executable. This can be done by entering the following commands from the local directory where they are stored:
 
-`chmod +x XXX.sh`
-`chmod +x translator.py`
+`chmod +x DeCatCounter.sh`
 
-The pipeline will not be found unless it is stored in the working directory or in a directory that is in the user's PATH environment (e.g. `bin/`). Also, the pipeline will not be able to find the translator if it is not stored in a directory that is in the user's PATH environment (e.g. `bin/`). 
+The pipeline will not be found unless it is stored in the working directory or in a directory that is in the user's PATH environment (e.g. `bin/`). 
 
 # INPUT
 
@@ -47,6 +50,9 @@ Sequencing reads are assumed to be in FASTA format. If your sequencing reads fil
 # Test dataset
 
 A mock, test dataset (test_input.fasta) is provided, together with barcodes and adapter text files (barcodes.txt, adapters.txt).
+To run the test dataset, type:
+
+`python DeCatCounter.py test_input.fasta barcodes.txt 0 0 adapters.txt 0 0 y 5 50`
      
 # Reporting bugs
 
