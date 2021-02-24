@@ -40,7 +40,7 @@ DeCatCounter must be made executable. This can be done by entering the following
 
 The pipeline will not be found unless it is stored in the working directory or in a directory that is in the user's PATH environment (e.g. `bin/`). 
 
-# INPUT
+# Input
 
 All input files (sequencing reads, barcodes and adapters text files) must be located in the same directory.
 Sequencing reads are assumed to be in FASTA format. If your sequencing reads file is in FASTQ format, please convert it to fasta using the following command (convert input.fastq to output.fasta):
@@ -49,8 +49,11 @@ Sequencing reads are assumed to be in FASTA format. If your sequencing reads fil
 
 The barcodes files should be a text file with 3 columns: 1) sample name, 2)corresponding forward barcode, 3) reverse barcode. For example:
 
-![sequences](figures/barcodes.png)
+![barcodes](barcodes.png)
 
+The adapter files should have 2 lines: 1) forward adapter, 2) reverse adapter. For example:
+
+![adapters](adapters.png)
 
 # Test dataset
 
