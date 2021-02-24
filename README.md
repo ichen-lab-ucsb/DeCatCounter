@@ -53,7 +53,7 @@ The barcodes files should be a text file with 3 columns: 1) sample name, 2)corre
 
 The adapter files should have 2 lines: 1) forward adapter, 2) reverse adapter. For example:
 
-![adapters](adapters.png | width=100)
+<img src="adapters.png" width="500" >
 
 # Test dataset
 
