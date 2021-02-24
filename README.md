@@ -1,3 +1,6 @@
+# ADD OUTPUT FOR EXAMPLE
+# MENTION STOP CODON 
+
 # DeCatCounter
 
 This is the README document for DeCatCounter, a pipeline for processing concatenated PacBio reads from _in vitro_ selection experiments. The pipeline can be used to process nucleotides or amino acids sequencing data.
@@ -21,16 +24,16 @@ To use the pipeline, type in the terminal:
 * low_len: minimum length for final DNA variants.
 * hi_len: maximum length for final DNA variants.
 
-# ADD EXAMPLE OF BARCODE AND ADAPTER TEXT FILES!!!!!!!
-# ADD OUTPUT FOR EXAMPLE
-# MENTION STOP CODON 
-
 # Dependencies
 The pipeline script was written to run on Unix-based systems, like Linux, Ubuntu, and MacOS. Windows 10 also has a [Linux subsystem](https://docs.microsoft.com/en-us/windows/wsl/faq).
 
 To use the pipeline, first install [Python](https://www.python.org/downloads/). We recommend using the Anaconda distribution of python, and adding the Bioconda channel to Anaconda's package manager, conda. See the [Anaconda documentation](https://docs.anaconda.com/anaconda/install/) for installation. 
 
-In order for the pipeline to be called from any directory and for the pipeline to call the translator reliably, both scripts must be placed in a directory that is in the user's PATH environment variable upon download. For example, for Unix/Linux users, scripts could be placed in `/usr/local/bin/` upon download. These files can be placed in that directory with the command:
+To install the rest of dependencies needed (biopython, futures, python-Levenshtein, tabulate and pandas), download the file `requirements.txt` and run the following command from the directory it's located:
+
+`pip install -r requirements/txt` 
+
+In order for the pipeline to be called from any directory and for the pipeline to call the translator reliably, the script must be placed in a directory that is in the user's PATH environment variable upon download. For example, for Unix/Linux users, scripts could be placed in `/usr/local/bin/` upon download. These files can be placed in that directory with the command:
 
 `cp /path/to/pipeline.sh /usr/local/bin/` 
 
@@ -55,13 +58,19 @@ The adapter files should have 2 lines: 1) forward adapter, 2) reverse adapter. F
 
 <img src="/figures/adapters.png" width="500" >
 
+# Output
+
+The pipeline will generate an output directory, called `output+date&time`. Inside this directory, there will be a subdirectory for the count files and, if translation has been requested, a subdirectory for the amino acid count files. 
+
+There pipeline also creates a log file with the parameters used and a table listing the number of amplicons recovered after demultiplexing, and the number of sequences recovered after deconcatenation and after trimming and filtering by length.
+
 # Test dataset
 
 A mock, test dataset (test_input.fasta) is provided, together with barcodes and adapter text files (barcodes.txt, adapters.txt).
 To run the test dataset, type:
 
 `python DeCatCounter.py test_input.fasta barcodes.txt 0 0 adapters.txt 0 0 y 5 50`
-     
+   
 # Reporting bugs
 
 Please report any bugs to Celia Blanco (celiablanco@ucla.edu). 
