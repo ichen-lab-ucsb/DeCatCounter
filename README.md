@@ -18,8 +18,8 @@ To use the pipeline, type in the terminal:
 * ad_tol_f: error tolerance for forward adapter search.
 * ad_tol_r: error tolerance for reverse adapter search.
 * translation(y/n): whether translation to amino acids should be performed, value should be either y or n. 
-* low_len: minimum length for final variants.
-* hi_len: maximum length for final variants.
+* low_len: minimum length for final DNA variants.
+* hi_len: maximum length for final DNA variants.
 
 # ADD EXAMPLE OF BARCODE AND ADAPTER TEXT FILES!!!!!!!
 # ADD OUTPUT FOR EXAMPLE
@@ -46,6 +46,11 @@ All input files (sequencing reads, barcodes and adapters text files) must be loc
 Sequencing reads are assumed to be in FASTA format. If your sequencing reads file is in FASTQ format, please convert it to fasta using the following command (convert input.fastq to output.fasta):
 
 `cat input.fastq | awk '{if(NR%4==1) {printf(">%s\n",substr($0,2));} else if(NR%4==2) print;}' > output.fasta`
+
+The barcodes files should be a text file with 3 columns: 1) sample name, 2)corresponding forward barcode, 3) reverse barcode. For example:
+
+![sequences](figures/barcodes.png)
+
 
 # Test dataset
 
