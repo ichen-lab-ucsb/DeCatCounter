@@ -74,6 +74,10 @@ To run the test dataset, type:
 If everything is working, your terminal should look like this:
 
 <img src="/figures/test_terminal.png" width="500" >
+
+and you should have a new folder in your directory:
+
+<img src="/figures/output.png" width="500" >
    
 # Reporting bugs
 
