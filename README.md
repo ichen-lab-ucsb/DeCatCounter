@@ -11,7 +11,7 @@ To use the pipeline, type in the terminal:
 
 `python DeCatCounter.py input_file barcodes.txt barc_tol_f barc_tol_r adapters.txt adap_tol_f adap_tol_r translation(y/n) low_len hi_len`
 
-![sequences](sequences.png)
+![sequences](/figures/sequences.png)
 
 * input_file: name of input file (must include the full path to the directory where it's located).
 * barcodes.txt: text file with 3 columns: 1) sample name, 2)corresponding forward barcode, 3) reverse barcode.
