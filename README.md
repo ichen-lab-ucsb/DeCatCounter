@@ -49,11 +49,11 @@ Sequencing reads are assumed to be in FASTA format. If your sequencing reads fil
 
 The barcodes files should be a text file with 3 columns: 1) sample name, 2)corresponding forward barcode, 3) reverse barcode. For example:
 
-![barcodes](barcodes.png)
+![barcodes](barcodes.png | width=100)
 
 The adapter files should have 2 lines: 1) forward adapter, 2) reverse adapter. For example:
 
-![adapters](adapters.png)
+![adapters](adapters.png | width=100)
 
 # Test dataset
 
