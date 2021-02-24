@@ -72,11 +72,11 @@ To run the test dataset, type:
 
 If everything is working, your terminal should look like this:
 
-<img src="/figures/test_terminal.png" width="400" >
+<img align="center" src="/figures/test_terminal.png" width="400" >
 
 and you should have a new folder in your directory:
 
-<img src="/figures/output.png" width="1000" >
+<img align="center" src="/figures/output.png" width="1000" >
    
 # Reporting bugs
 
