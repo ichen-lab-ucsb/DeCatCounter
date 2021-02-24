@@ -70,6 +70,10 @@ A mock, test dataset (test_input.fasta) is provided, together with barcodes and 
 To run the test dataset, type:
 
 `python DeCatCounter.py test_input.fasta barcodes.txt 0 0 adapters.txt 0 0 y 5 50`
+
+If everything is working, your terminal should look like this:
+
+<img src="/figures/test_terminal.png" width="500" >
    
 # Reporting bugs
 
