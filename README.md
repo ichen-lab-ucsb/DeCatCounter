@@ -52,11 +52,11 @@ Sequencing reads are assumed to be in FASTA format. If your sequencing reads fil
 
 The barcodes files should be a text file with 3 columns: 1) sample name, 2)corresponding forward barcode, 3) reverse barcode. For example:
 
-<img src="/figures/barcodes.png" width="500" >
+<img src="/figures/barcodes.png" width="300" >
 
 The adapter files should have 2 lines: 1) forward adapter, 2) reverse adapter. For example:
 
-<img src="/figures/adapters.png" width="500" >
+<img src="/figures/adapters.png" width="300" >
 
 # Output
 
@@ -73,11 +73,11 @@ To run the test dataset, type:
 
 If everything is working, your terminal should look like this:
 
-<img src="/figures/test_terminal.png" width="500" >
+<img src="/figures/test_terminal.png" width="300" >
 
 and you should have a new folder in your directory:
 
-<img src="/figures/output.png" width="500" >
+<img src="/figures/output.png" width="800" >
    
 # Reporting bugs
 
