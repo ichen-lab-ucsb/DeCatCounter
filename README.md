@@ -32,15 +32,9 @@ To install the rest of dependencies needed (biopython, futures, python-Levenshte
 
 `pip install -r requirements/txt` 
 
-In order for the pipeline to be called from any directory and for the pipeline to call the translator reliably, the script must be placed in a directory that is in the user's PATH environment variable upon download. For example, for Unix/Linux users, scripts could be placed in `/usr/local/bin/` upon download. These files can be placed in that directory with the command:
+The pipeline will not be found unless it is stored in the working directory or in a directory that is in the user's PATH environment. For example, for Unix/Linux users, scripts could be placed in `/usr/local/bin/` upon download. These files can be placed in that directory with the command:
 
-`cp /path/to/pipeline.sh /usr/local/bin/` 
-
-DeCatCounter must be made executable. This can be done by entering the following commands from the local directory where they are stored:
-
-`chmod +x DeCatCounter.sh`
-
-The pipeline will not be found unless it is stored in the working directory or in a directory that is in the user's PATH environment (e.g. `bin/`). 
+`cp /path/to/DeCatCounter.py /usr/local/bin/`
 
 # Input
 
