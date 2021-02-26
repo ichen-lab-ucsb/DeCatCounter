@@ -1,5 +1,5 @@
 <p align="center">
-  <img width="1500" src="/figures/logo.png">
+  <img width="2000" src="/figures/logo.png">
 </p>
 
 # DeCatCounter
