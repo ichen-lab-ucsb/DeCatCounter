@@ -4,7 +4,7 @@
 
 # DeCatCounter
 
-This is the README document for DeCatCounter, a python pipeline for processing concatenated PacBio reads from _in vitro_ selection experiments. The pipeline can be used to process nucleotides or amino acids sequencing data.
+This is the README document for DeCatCounter, a python pipeline for processing concatenated PacBio reads from _in vitro_ selection experiments. The pipeline can demultiplex the amplicons, deconcatenatenate into sequence and count their count reads. DeCatCounter can be used to process nucleotides or amino acids sequencing data.
 
 # Usage
 
