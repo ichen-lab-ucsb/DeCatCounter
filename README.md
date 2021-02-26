@@ -1,4 +1,6 @@
-![logo](/figures/logo.png)
+<p align="center">
+  <img width="1000" src="/figures/logo.png">
+</p>
 
 # DeCatCounter
 
