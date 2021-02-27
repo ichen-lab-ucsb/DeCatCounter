@@ -6,6 +6,11 @@
 # contact: celiablanco@ucla.edu
 # Dependencies:
 	# python
+	# biopython
+	# futures
+	# python-Levenshtein
+	# tabulate
+	# pandas
 
 from __future__ import print_function
 import sys
