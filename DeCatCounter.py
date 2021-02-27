@@ -18,16 +18,25 @@ import os
 import Levenshtein
 from Bio import SeqIO
 from Bio.Seq import Seq
-import numpy as np
 import pandas as pd
 from pandas import DataFrame
 import math
+from tabulate import tabulate
+import time
 
 # How to run it:
 # python DeCatCounter.py in_file barcodes.txt tol_dem_f tol_dem_r adapters.txt tol_decon_f tol_decon_r translation(y/n) len1 len2
 
 # e.g.:
 # python DeCatCounter.py CCS_99.fasta barcodes.txt 2 2 adapters.txt 4 2 y 707 825 
+
+print("")
+print(" ____        ____      _    ____                  _            ")
+print("|  _ \  ___ / ___|__ _| |_ / ___|___  _   _ _ __ | |_ ___ _ __ ")
+print("| | | |/ _ \ |   / _` | __| |   / _ \| | | | '_ \| __/ _ \ '__|")
+print("| |_| |  __/ |__| (_| | |_| |__| (_) | |_| | | | | ||  __/ |   ")
+print("|____/ \___|\____\__,_|\__|\____\___/ \__,_|_| |_|\__\___|_|        ")                                                             
+print("")
 
 ############################################################
 ############### PARAMETERS DEMULTIPLEX ###############
@@ -160,26 +169,39 @@ def translate_dna_single(dna, frame=1):
 #############################################
 
 # read input file
+print("Reading input file ...")
+print("")
 recorcito_dem = []
-total = 0
+total_in = 0
 fasta_sequences = SeqIO.parse(open(file_in_to_dem),"fasta")
 for fasta in fasta_sequences:
         name, sequence = fasta.id, str(fasta.seq)
         recorcito_dem.append({'name': name, 'seq': sequence})
-        total += 1
+        total_in += 1
 
+#generate list to stored demultiplexed sequences (will be the input for generating count files)
+dem_seq = []
+for sample in samples:
+	dem_seq.append(0)
+	
+#generate list to stored deconcatenated sequences (will be the input for generating count files)
+dec_seq = []
+for sample in samples:
+	dec_seq.append(0)
+	
 #generate list to stored trimmed sequences (will be the input for generating count files)
 trim_seq = []
 for sample in samples:
 	trim_seq.append([])
 	
 ### demultiplex fwd reads
-dem_fwd = []
+print("Processing forward reads ...")
+print("")
 for element in recorcito_dem:
 	for s,pair in enumerate(bc_pair_fdir):
 		if Levenshtein.distance(element['seq'][0:len(pair[0])],pair[0]) <= tol_dem_f:
 			if Levenshtein.distance(element['seq'][-len(pair[1]):],pair[1]) <= tol_dem_r:
-
+				dem_seq[s] += 1
 # deconcatenate fwd reads
 				seq_temp = element['seq'][len(pair[0]):len(element['seq'])-len(pair[1])]
 				vec_seq_lev = []
@@ -268,16 +290,19 @@ for element in recorcito_dem:
 							for y in vec_mat2:
 								insertion = seq_temp2[y[0]-1:y[1]]
 								vec_ins2.append(insertion)
+							dec_seq[s] += 1
 							if low_len <= len(vec_ins2[0]) <= hi_len:
 								trim_seq[s].append(vec_ins2[0])
 
 # demultiplex rev reads
+print("Processing reverse reads ...")
+print("")
 dem_rev = []
 for element in recorcito_dem:
 	for s,pair in enumerate(bc_pair_rdir):
 		if Levenshtein.distance(element['seq'][0:len(pair[0])],pair[0]) <= tol_dem_r:
 			if Levenshtein.distance(element['seq'][-len(pair[1]):],pair[1]) <= tol_dem_f:
-
+				dem_seq[s] += 1
 # deconcatenate rev reads
 				seq_temp = element['seq'][len(pair[0]):len(element['seq'])-len(pair[1])]
 				vec_seq_lev = []
@@ -368,20 +393,25 @@ for element in recorcito_dem:
 							for y in vec_mat2:
 								insertion = seq_temp2[y[0]-1:y[1]]
 								vec_ins2.append(insertion)
+							dec_seq[s] += 1
 							if low_len <= len(vec_ins2[0]) <= hi_len:
 								seq_f = vec_ins2[0]
 								seq_r = str(Seq(seq_f).reverse_complement())
 								trim_seq[s].append(seq_r)
 
-# create directory for count files
-if not os.path.exists("dem"+str(tol_dem_f)+'.'+str(tol_dem_r) + "_" + "dec"+str(tol_dec_f)+'.'+str(tol_dec_r) + "_counts"):
-    os.makedirs("dem"+str(tol_dem_f)+'.'+str(tol_dem_r) + "_" + "dec"+str(tol_dec_f)+'.'+str(tol_dec_r)  + "_counts")
 
+# create directory for count files
+print("Creating output directory ...")
+print("")
+timestr = time.strftime("%Y%m%d-%H%M%S")
+if not os.path.exists("output" + str(timestr) + "/counts"):
+    os.makedirs("output" + str(timestr) + "/counts")
+    
 # create count files    
 f_name_out_counts = []
 for sample in samples:
-	f_name_out_counts.append("dem"+str(tol_dem_f)+'.'+str(tol_dem_r) + "_" + "dec"+str(tol_dec_f)+'.'+str(tol_dec_r)  + "_counts"
-	+"/sample" + str(sample) + "_" + "dem"+str(tol_dem_f)+'.'+str(tol_dem_r) + "_" + "dec"+str(tol_dec_f)+'.'+str(tol_dec_r)  + "_counts" + ".txt")
+	f_name_out_counts.append("output" + str(timestr) + "/counts"
+	+"/sample" + str(sample) + ".txt")
 
 # open count files to write
 out_counts = []
@@ -393,14 +423,14 @@ trans_flag = str(sys.argv[8])
 
 # create directory for aa count files
 if trans_flag == 'y':
-	if not os.path.exists("dem"+str(tol_dem_f)+'.'+str(tol_dem_r) + "_" + "dec"+str(tol_dec_f)+'.'+str(tol_dec_r) + "_" + "len"+str(low_len)+'.'+str(hi_len) +"_"+ "aa"):
-		os.makedirs("dem"+str(tol_dem_f)+'.'+str(tol_dem_r) + "_" + "dec"+str(tol_dec_f)+'.'+str(tol_dec_r) + "_" + "len"+str(low_len)+'.'+str(hi_len) +"_"+ "aa")
+	if not os.path.exists("output" + str(timestr) + "/counts_aa"):
+		os.makedirs("output" + str(timestr) + "/counts_aa")
 
 # create aa count files	
 	f_name_out_counts_aa = []
 	for sample in samples:
-		f_name_out_counts_aa.append("dem"+str(tol_dem_f)+'.'+str(tol_dem_r) + "_" + "dec"+str(tol_dec_f)+'.'+str(tol_dec_r) + "_" + "len"+str(low_len)+'.'+str(hi_len) +"_"+ "aa"
-		+"/sample" + str(sample) + "_" + "dem"+str(tol_dem_f)+'.'+str(tol_dem_r) + "_" + "dec"+str(tol_dec_f)+'.'+str(tol_dec_r) + "_" + "len"+str(low_len)+'.'+str(hi_len) +"_"+ "aa" + ".txt")
+		f_name_out_counts_aa.append("output" + str(timestr) + "/counts_aa"
+		+"/sample" + str(sample) + "_aa" + ".txt")
 
 # open aa count files
 	out_counts_aa = []
@@ -408,7 +438,9 @@ if trans_flag == 'y':
 		out_counts_aa.append(open(file, 'w'))
 
 # generate content for count files
-for i, sample in enumerate(trim_seq):
+for i, sample in enumerate(samples):
+	print("Generating count file for sample " + str(sample) + " ...")
+	print("")
 	df = DataFrame (trim_seq[i],columns=['seq'])
 	df = df.groupby('seq').seq.count().reset_index(name='counts')
 	df = df.sort_values(by=['counts'], ascending=False)
@@ -423,6 +455,8 @@ for i, sample in enumerate(trim_seq):
 
 # translate to amino acids	
 	if trans_flag == 'y':
+		print("Generating aa count file for sample " + str(sample) + " ...")
+		print("")
 		df_aa_dup = df[['counts', 'aa']].copy()
 		cols_aa = ['aa', 'counts']
 		df_aa_dup = df_aa_dup[cols_aa]
@@ -444,10 +478,33 @@ if trans_flag == 'y':
 	for i, file in enumerate(f_name_out_counts_aa):
 		out_counts_aa[i].close()
 
-	
+# create log ouput file
+f_out=open("output" + str(timestr) + "/log.txt", 'w') 
 
+f_out.write("Input file: " + str(file_in_to_dem)+ '\n')	
+f_out.write("Barcodes file: " + str(bc_file)+ '\n')	
+f_out.write("Tolerance for forward barcode: "+ str(tol_dem_f)+ '\n')	
+f_out.write("Tolerance for reverse barcode: "+ str(tol_dem_r)+ '\n')	
+f_out.write("Adapters file: "+ str(ad_file)	+ '\n')
+f_out.write("Tolerance for forward adapter: "+ str(tol_dec_f)+ '\n')	
+f_out.write("Tolerance for reverse adapter: "+ str(tol_dec_r)+ '\n')
+f_out.write("Lower length: "+ str(low_len)+ '\n')
+f_out.write("Higher length: "+ str(hi_len)+ '\n')
+f_out.write(""+ '\n')
+f_out.write("Number of sequences in input file: "+ str(total_in)+ '\n')	
+f_out.write(""+ '\n')	
 
+header = ["Sample", "Demultiplexed", "Deconcatenated", "Filtered"]
+table = []
+for i, sample in enumerate(samples):
+	table.append([])
+	table[i].append(samples[i])
+	table[i].append(dem_seq[i])
+	table[i].append(dec_seq[i])
+	table[i].append(len(trim_seq[i]))
 
+print(tabulate(table, headers = header))
+f_out.write(tabulate(table, headers = header))
 
 
 
