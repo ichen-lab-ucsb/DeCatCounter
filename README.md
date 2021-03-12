@@ -30,7 +30,7 @@ The pipeline script was written to run on Unix-based systems, like Linux, Ubuntu
 
 To use the pipeline, first install [Python](https://www.python.org/downloads/). We recommend using the Anaconda distribution of python, and adding the Bioconda channel to Anaconda's package manager, conda. See the [Anaconda documentation](https://docs.anaconda.com/anaconda/install/) for installation. 
 
-To install the rest of dependencies needed (biopython, futures, python-Levenshtein, tabulate and pandas), download the file `requirements.txt` and run the following command from the directory it's located:
+To install the rest of dependencies needed ([biopython](https://biopython.org/), [futures](https://docs.python.org/3/library/asyncio-future.html), [python-Levenshtein](https://pypi.org/project/python-Levenshtein/), [tabulate](https://pypi.org/project/tabulate/) and [pandas](https://pandas.pydata.org/), download the file `requirements.txt` and run the following command from the directory it's located:
 
 `pip install -r requirements/txt` 
 
