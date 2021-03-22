@@ -1,2 +1,2 @@
-fwd_adapter
-rev_adapter
+fwd_constant
+rev_constant
