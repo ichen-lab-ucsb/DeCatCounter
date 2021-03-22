@@ -10,7 +10,7 @@ This is the README document for DeCatCounter, a python pipeline for processing c
 
 To use the pipeline, type in the terminal:
 
-`python DeCatCounter.py input_file barcodes.txt barc_tol_f barc_tol_r adapters.txt adap_tol_f adap_tol_r translation(y/n) low_len hi_len`
+`python DeCatCounter.py input_file barcodes.txt barc_tol_f barc_tol_r constant.txt adap_tol_f adap_tol_r translation(y/n) low_len hi_len`
 
 ![sequences](/figures/sequences.png)
 
@@ -18,9 +18,9 @@ To use the pipeline, type in the terminal:
 * barcodes.txt: text file with 3 columns: 1) sample name, 2)corresponding forward barcode, 3) reverse barcode.
 * bc_tol_f: error tolerance for forward barcode search in the forward reads(for the reverse reads, this is the error tolerance for the rC of the reverse barcode).
 * bc_tol_r: error tolerance for reverse barcode search.
-* adapters.txt: text file with 2 lines: 1) forward adapter, 2) reverse adapter.
-* ad_tol_f: error tolerance for forward adapter search.
-* ad_tol_r: error tolerance for reverse adapter search.
+* constant.txt: text file with 2 lines: 1) forward constant region, 2) reverse constant region.
+* ad_tol_f: error tolerance for forward constant region search.
+* ad_tol_r: error tolerance for reverse constant region search.
 * translation(y/n): whether translation to amino acids should be performed, value should be either y or n. 
 * low_len: minimum length for final DNA variants.
 * hi_len: maximum length for final DNA variants.
@@ -40,7 +40,7 @@ The pipeline will not be found unless it is stored in the working directory or i
 
 # Input
 
-All input files (sequencing reads, barcodes and adapters text files) must be located in the same directory.
+All input files (sequencing reads, barcodes and constant regions text files) must be located in the same directory.
 Sequencing reads are assumed to be in FASTA format. If your sequencing reads file is in FASTQ format, please convert it to fasta using the following command (convert input.fastq to output.fasta):
 
 `cat input.fastq | awk '{if(NR%4==1) {printf(">%s\n",substr($0,2));} else if(NR%4==2) print;}' > output.fasta`
@@ -51,7 +51,7 @@ The barcodes files should be a text file with 3 columns: 1) sample name, 2)corre
   <img width="400" src="/figures/barcodes.png">
 </p>
 
-The adapter files should have 2 lines: 1) forward adapter, 2) reverse adapter. For example:
+The constant regions files should have 2 lines: 1) forward constant region, 2) reverse constant region. For example:
 
 <p align="center">
   <img width="400" src="/figures/adapters.png">
@@ -65,10 +65,10 @@ There pipeline also creates a log file with the parameters used and a table list
 
 # Test dataset
 
-A mock, test dataset (test_input.fasta) is provided, together with barcodes and adapter text files (barcodes.txt, adapters.txt).
+A mock, test dataset (test_input.fasta) is provided, together with barcodes and constant regions text files (barcodes.txt, constant.txt).
 To run the test dataset, type:
 
-`python DeCatCounter.py test_input.fasta barcodes.txt 0 0 adapters.txt 0 0 y 5 50`
+`python DeCatCounter.py test_input.fasta barcodes.txt 0 0 constant.txt 0 0 y 5 50`
 
 If everything is working, your terminal should look like this:
 
