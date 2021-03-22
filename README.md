@@ -10,7 +10,7 @@ This is the README document for DeCatCounter, a python pipeline for processing c
 
 To use the pipeline, type in the terminal:
 
-`python DeCatCounter.py input_file barcodes.txt barc_tol_f barc_tol_r constant.txt adap_tol_f adap_tol_r translation(y/n) low_len hi_len`
+`python DeCatCounter.py input_file barcodes.txt barc_tol_f barc_tol_r constant.txt ct_tol_f ct_tol_r translation(y/n) low_len hi_len`
 
 ![sequences](/figures/sequences.png)
 
