@@ -54,7 +54,7 @@ The barcodes files should be a text file with 3 columns: 1) sample name, 2)corre
 The constant regions files should have 2 lines: 1) forward constant region, 2) reverse constant region. For example:
 
 <p align="center">
-  <img width="400" src="/figures/constant.png">
+  <img width="350" src="/figures/constant.png">
 </p>
 
 # Output
