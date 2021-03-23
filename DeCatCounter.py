@@ -25,10 +25,10 @@ from tabulate import tabulate
 import time
 
 # How to run it:
-# python DeCatCounter.py in_file barcodes.txt tol_dem_f tol_dem_r adapters.txt tol_decon_f tol_decon_r translation(y/n) len1 len2
+# python DeCatCounter.py in_file barcodes.txt tol_dem_f tol_dem_r constant.txt tol_decon_f tol_decon_r translation(y/n) len1 len2
 
 # e.g.:
-# python DeCatCounter.py CCS_99.fasta barcodes.txt 2 2 adapters.txt 4 2 y 707 825 
+# python DeCatCounter.py CCS_99.fasta barcodes.txt 2 2 constant.txt 4 2 y 707 825 
 
 print("")
 print(" ____        ____      _    ____                  _            ")
@@ -72,7 +72,7 @@ ad_file = sys.argv[5]
 tol_dec_f = int(sys.argv[6])
 tol_dec_r = int(sys.argv[7])
 
-# assign adapters for fwd and rev seq reads
+# assign constant regions for fwd and rev seq reads
 ads = open(ad_file, 'r')
 adapters=[]
 for line in ads:
@@ -485,9 +485,9 @@ f_out.write("Input file: " + str(file_in_to_dem)+ '\n')
 f_out.write("Barcodes file: " + str(bc_file)+ '\n')	
 f_out.write("Tolerance for forward barcode: "+ str(tol_dem_f)+ '\n')	
 f_out.write("Tolerance for reverse barcode: "+ str(tol_dem_r)+ '\n')	
-f_out.write("Adapters file: "+ str(ad_file)	+ '\n')
-f_out.write("Tolerance for forward adapter: "+ str(tol_dec_f)+ '\n')	
-f_out.write("Tolerance for reverse adapter: "+ str(tol_dec_r)+ '\n')
+f_out.write("Constant regions file: "+ str(ad_file)	+ '\n')
+f_out.write("Tolerance for forward constant region: "+ str(tol_dec_f)+ '\n')	
+f_out.write("Tolerance for reverse constant region: "+ str(tol_dec_r)+ '\n')
 f_out.write("Lower length: "+ str(low_len)+ '\n')
 f_out.write("Higher length: "+ str(hi_len)+ '\n')
 f_out.write(""+ '\n')
