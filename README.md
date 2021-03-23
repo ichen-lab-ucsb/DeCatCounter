@@ -10,7 +10,7 @@ This is the README document for DeCatCounter, a python pipeline for processing c
 
 To use the pipeline, type in the terminal:
 
-`python DeCatCounter.py input_file barcodes.txt barc_tol_f barc_tol_r constant.txt ct_tol_f ct_tol_r translation(y/n) low_len hi_len`
+`python DeCatCounter.py input_file barcodes.txt bc_tol_f bc_tol_r constant.txt ct_tol_f ct_tol_r translation(y/n) low_len hi_len`
 
 ![sequences](/figures/sequences.png)
 
@@ -19,8 +19,8 @@ To use the pipeline, type in the terminal:
 * bc_tol_f: error tolerance for forward barcode search in the forward reads(for the reverse reads, this is the error tolerance for the rC of the reverse barcode).
 * bc_tol_r: error tolerance for reverse barcode search.
 * constant.txt: text file with 2 lines: 1) forward constant region, 2) reverse constant region.
-* ad_tol_f: error tolerance for forward constant region search.
-* ad_tol_r: error tolerance for reverse constant region search.
+* ct_tol_f: error tolerance for forward constant region search.
+* ct_tol_r: error tolerance for reverse constant region search.
 * translation(y/n): whether translation to amino acids should be performed, value should be either y or n. 
 * low_len: minimum length for final DNA variants.
 * hi_len: maximum length for final DNA variants.
