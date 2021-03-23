@@ -1,2 +1,0 @@
-fwd_constant
-rev_constant
