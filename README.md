@@ -35,8 +35,10 @@ The following dependencies are needed: [biopython](https://biopython.org/), [pyt
 
 Although not necessary, we recommend [using Anaconda to create a virtual environment](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) where you can install the required dependencies. To do this:
 
-```conda create -n py3 python=3
-source activate py3```
+```
+conda create -n py3 python=3
+source activate py3
+```
 
 # Input
 
