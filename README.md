@@ -4,11 +4,11 @@
 
 # DeCatCounter
 
-This is the README document for DeCatCounter, a python pipeline for processing concatenated PacBio reads from _in vitro_ selection experiments. The pipeline can demultiplex the amplicons, deconcatenatenate into sequence and count their count reads. DeCatCounter can be used to process nucleotides or amino acids sequencing data.
+This is the README document for DeCatCounter, a Python pipeline for processing concatenated PacBio reads from _in vitro_ selection experiments. The pipeline can demultiplex the amplicons, deconcatenatenate into sequence and count their count reads. DeCatCounter can be used to process nucleotides or amino acids sequencing data.
 
 # Usage
 
-To use the pipeline, type in the terminal:
+The pipeline tool is written in Python and it can be run using a Python interpreter. To run it from the Command Line Interface (aka the Terminal), type:
 
 `python DeCatCounter.py input_file barcodes.txt bc_tol_f bc_tol_r constant.txt ct_tol_f ct_tol_r translation(y/n) low_len hi_len`
 
@@ -25,18 +25,18 @@ To use the pipeline, type in the terminal:
 * low_len: minimum length for final DNA variants.
 * hi_len: maximum length for final DNA variants.
 
-# Dependencies
-The pipeline script was written to run on Unix-based systems, like Linux, Ubuntu, and MacOS. Windows 10 also has a [Linux subsystem](https://docs.microsoft.com/en-us/windows/wsl/faq).
+# Environment setup
 
-To use the pipeline, first install [Python](https://www.python.org/downloads/). We recommend using the Anaconda distribution of python, and adding the Bioconda channel to Anaconda's package manager, conda. See the [Anaconda documentation](https://docs.anaconda.com/anaconda/install/) for installation. 
+Python must be installed to run DeCatCounter. We recommend using the Anaconda distribution of Python, and adding the Bioconda channel to Anaconda's package manager, Conda. See the [Anaconda documentation](https://docs.anaconda.com/anaconda/install/) for installation. 
 
-The following dependencies are needed: [biopython](https://biopython.org/), [futures](https://docs.python.org/3/library/asyncio-future.html), [python-Levenshtein](https://pypi.org/project/python-Levenshtein/), [tabulate](https://pypi.org/project/tabulate/) and [pandas](https://pandas.pydata.org/). You can either install them one by one, or you can download the file `requirements.txt` and run the following command from the directory it's located:
+Although not necessary, we recommend [using Anaconda to create a virtual environment](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) where you can install the required dependencies. To do this:
 
-`pip install -r requirements/txt` 
+`conda create -n py3 python=3`
+`source activate py3`
 
-The pipeline will not be found unless it is stored in the working directory or in a directory that is in the user's PATH environment. For example, for Unix/Linux users, scripts could be placed in `/usr/local/bin/` upon download. These files can be placed in that directory with the command:
+The following dependencies are needed: [biopython](https://biopython.org/), [python-Levenshtein](https://pypi.org/project/python-Levenshtein/), [tabulate](https://pypi.org/project/tabulate/) and [pandas](https://pandas.pydata.org/). You can either install them one by one, or you can download the file `requirements.txt` and run the following command from the directory it's located:
 
-`cp /path/to/DeCatCounter.py /usr/local/bin/`
+`conda install --file requirements.txt` 
 
 # Input
 
@@ -66,7 +66,7 @@ There pipeline also creates a log file with the parameters used and a table list
 # Test dataset
 
 A mock, test dataset (test_input.fasta) is provided, together with barcodes and constant regions text files (barcodes.txt, constant.txt).
-To run the test dataset, type:
+To run the test dataset, place all files (DeCatCounter.py, test_input.fasta, barcodes.txt and constant.txt) in the same folder and type:
 
 `python DeCatCounter.py test_input.fasta barcodes.txt 0 0 constant.txt 0 0 y 5 50`
 
