@@ -33,7 +33,7 @@ The following dependencies are needed: [biopython](https://biopython.org/), [pyt
 
 `conda install --file requirements.txt` 
 
-Although not necessary, we recommend [using Anaconda to create a virtual environment](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) where you can install the required dependencies. To do this:
+Although not necessary, we recommend [using Anaconda to create a virtual environment](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) to avoid version conflicts and undesired upgrades/downgrades. Once your virtual environment is active, you can install the required dependencies there. To do this:
 
 ```
 conda create -n py3 python=3
