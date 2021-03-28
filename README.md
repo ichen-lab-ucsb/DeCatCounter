@@ -29,14 +29,14 @@ The pipeline tool is written in Python and it can be run using a Python interpre
 
 Python must be installed to run DeCatCounter. We recommend using the Anaconda distribution of Python, and adding the Bioconda channel to Anaconda's package manager, Conda. See the [Anaconda documentation](https://docs.anaconda.com/anaconda/install/) for installation. 
 
+The following dependencies are needed: [biopython](https://biopython.org/), [python-Levenshtein](https://pypi.org/project/python-Levenshtein/), [tabulate](https://pypi.org/project/tabulate/) and [pandas](https://pandas.pydata.org/). You can either install them one by one, or you can download the file `requirements.txt` and run the following command from the directory it's located:
+
+`conda install --file requirements.txt` 
+
 Although not necessary, we recommend [using Anaconda to create a virtual environment](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) where you can install the required dependencies. To do this:
 
 `conda create -n py3 python=3`
 `source activate py3`
-
-The following dependencies are needed: [biopython](https://biopython.org/), [python-Levenshtein](https://pypi.org/project/python-Levenshtein/), [tabulate](https://pypi.org/project/tabulate/) and [pandas](https://pandas.pydata.org/). You can either install them one by one, or you can download the file `requirements.txt` and run the following command from the directory it's located:
-
-`conda install --file requirements.txt` 
 
 # Input
 
