@@ -36,13 +36,13 @@ To create a virtual environment and install all dependencies::
 ```
 # create environment
 conda create -n py3 python=3
-#activate environment
+# activate environment
 source activate py3
-install additional dependencies
+# install additional dependencies
 conda install --file requirements.txt 
 ```
 
-Alternatively (although not recommened), DeCatCounter can be run from a local environemnt, where Python must be installed. In this case, we recommend using the Anaconda distribution of Python, and adding the Bioconda channel to Anaconda's package manager, Conda. See the [Anaconda documentation](https://docs.anaconda.com/anaconda/install/) for installation. 
+Alternatively (although not recommened), DeCatCounter can be run from a local environment, where Python must be installed. In this case, we recommend using the Anaconda distribution of Python, and adding the Bioconda channel to Anaconda's package manager, Conda. See the [Anaconda documentation](https://docs.anaconda.com/anaconda/install/) for installation. 
 
 # Input
 
