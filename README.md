@@ -8,7 +8,7 @@ This is the README document for DeCatCounter, a Python pipeline for processing c
 
 # Usage
 
-The pipeline tool is written in Python and it can be run using a Python interpreter. To run it from the Command Line Interface (aka the Terminal), type:
+The pipeline tool is written in Python and it can be run using a Python interpreter, like the Command Line Interface (aka the Terminal) or any other specific software (e.g. PythonWin). To run the script from the Terminal, type:
 
 `python DeCatCounter.py input_file barcodes.txt bc_tol_f bc_tol_r constant.txt ct_tol_f ct_tol_r translation(y/n) low_len hi_len`
 
@@ -27,25 +27,26 @@ The pipeline tool is written in Python and it can be run using a Python interpre
 
 # Environment setup
 
-Python must be installed to run DeCatCounter. We recommend using the Anaconda distribution of Python, and adding the Bioconda channel to Anaconda's package manager, Conda. See the [Anaconda documentation](https://docs.anaconda.com/anaconda/install/) for installation. 
+We recommend [using Anaconda to create a virtual environment](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html). Although this is not necessary, using a virtual environment can prevent version conflicts and undesired upgrades/downgrades on already existing packages. 
 
-The following dependencies are needed: [biopython](https://biopython.org/), [python-Levenshtein](https://pypi.org/project/python-Levenshtein/), [tabulate](https://pypi.org/project/tabulate/) and [pandas](https://pandas.pydata.org/). You can either install them one by one, or you can download the file `requirements.txt` and run the following command from the directory it's located:
+Once your virtual environment is active, you can install Python and the other required dependencies there. The following dependencies are needed: [biopython](https://biopython.org/), [python-Levenshtein](https://pypi.org/project/python-Levenshtein/), [tabulate](https://pypi.org/project/tabulate/) and [pandas](https://pandas.pydata.org/). You can either install them one by one, or you can download the file `requirements.txt` and run the following command from the directory it's located.
 
-`conda install --file requirements.txt` 
-
-Although not necessary, we recommend [using Anaconda to create a virtual environment](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html) to avoid version conflicts and undesired upgrades/downgrades. Once your virtual environment is active, you can install the required dependencies there. To do this:
+To create a virtual environment and install all dependencies::
 
 ```
+# create environment
 conda create -n py3 python=3
+#activate environment
 source activate py3
+install additional dependencies
+conda install --file requirements.txt 
 ```
+
+Alternatively (although not recommened), DeCatCounter can be run from a local environemnt, where Python must be installed. In this case, we recommend using the Anaconda distribution of Python, and adding the Bioconda channel to Anaconda's package manager, Conda. See the [Anaconda documentation](https://docs.anaconda.com/anaconda/install/) for installation. 
 
 # Input
 
-All input files (sequencing reads, barcodes and constant regions text files) must be located in the same directory.
-Sequencing reads are assumed to be in FASTA format. If your sequencing reads file is in FASTQ format, please convert it to fasta using the following command (convert input.fastq to output.fasta):
-
-`cat input.fastq | awk '{if(NR%4==1) {printf(">%s\n",substr($0,2));} else if(NR%4==2) print;}' > output.fasta`
+The script requiers three input files: 1) sequencing reads, 2) barcodes text file and 3) constant regions text file. Sequencing reads are assumed to be either in FASTA or FASTQ format. 
 
 The barcodes files should be a text file with 3 columns: 1) sample name, 2)corresponding forward barcode, 3) reverse barcode. For example:
 
