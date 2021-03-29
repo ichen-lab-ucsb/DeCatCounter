@@ -16,7 +16,7 @@ The pipeline tool is written in Python and it can be run using a Python interpre
 
 * input_file: name of input file (must include the full path to the directory where it's located).
 * barcodes.txt: text file with 3 columns: 1) sample name, 2)corresponding forward barcode, 3) reverse barcode.
-* bc_tol_f: error tolerance for forward barcode search in the forward reads(for the reverse reads, this is the error tolerance for the rC of the reverse barcode).
+* bc_tol_f: error tolerance for forward barcode search in the forward reads (for the reverse reads, this is the error tolerance for the reverse complement of the reverse barcode).
 * bc_tol_r: error tolerance for reverse barcode search.
 * constant.txt: text file with 2 lines: 1) forward constant region, 2) reverse constant region.
 * ct_tol_f: error tolerance for forward constant region search.
@@ -29,9 +29,9 @@ The pipeline tool is written in Python and it can be run using a Python interpre
 
 We recommend [using Anaconda to create a virtual environment](https://docs.conda.io/projects/conda/en/latest/user-guide/tasks/manage-environments.html). Although this is not necessary, using a virtual environment can prevent version conflicts and undesired upgrades/downgrades on already existing packages. 
 
-Once your virtual environment is active, you can install Python and the other required dependencies there. The following dependencies are needed: [biopython](https://biopython.org/), [python-Levenshtein](https://pypi.org/project/python-Levenshtein/), [tabulate](https://pypi.org/project/tabulate/) and [pandas](https://pandas.pydata.org/). You can either install them one by one, or you can download the file `requirements.txt` and run the following command from the directory it's located.
+Once the virtual environment is active, Python and the other required dependencies can be installed there. The following dependencies are needed: [biopython](https://biopython.org/), [python-Levenshtein](https://pypi.org/project/python-Levenshtein/), [tabulate](https://pypi.org/project/tabulate/) and [pandas](https://pandas.pydata.org/). Dependencies can either be installed one by one, or using the `requirements.txt` file.
 
-To create a virtual environment and install all dependencies::
+To create a virtual environment and install all dependencies:
 
 ```
 # create environment
@@ -42,11 +42,11 @@ source activate py3
 conda install --file requirements.txt 
 ```
 
-Alternatively (although not recommened), DeCatCounter can be run from a local environment, where Python must be installed. In this case, we recommend using the Anaconda distribution of Python, and adding the Bioconda channel to Anaconda's package manager, Conda. See the [Anaconda documentation](https://docs.anaconda.com/anaconda/install/) for installation. 
+Alternatively (although not recommended), DeCatCounter can be run from a local environment, where Python must be installed. In this case, we recommend using the Anaconda distribution of Python, and adding the Bioconda channel to Anaconda's package manager, Conda. See the [Anaconda documentation](https://docs.anaconda.com/anaconda/install/) for installation. 
 
 # Input
 
-The script requiers three input files: 1) sequencing reads, 2) barcodes text file and 3) constant regions text file. Sequencing reads are assumed to be either in FASTA or FASTQ format. 
+The script requires three input files: 1) sequencing reads, 2) barcodes text file and 3) constant regions text file. Sequencing reads are assumed to be either in FASTA or FASTQ format. 
 
 The barcodes files should be a text file with 3 columns: 1) sample name, 2)corresponding forward barcode, 3) reverse barcode. For example:
 
@@ -73,7 +73,7 @@ To run the test dataset, place all files (DeCatCounter.py, test_input.fasta, bar
 
 `python DeCatCounter.py test_input.fasta barcodes.txt 0 0 constant.txt 0 0 y 5 50`
 
-If everything is working, your terminal should look like this:
+If everything went well, your terminal should look like this:
 
 <p align="center">
   <img width="400" src="/figures/test_terminal.png">
