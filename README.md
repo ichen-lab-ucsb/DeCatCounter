@@ -35,10 +35,10 @@ To create a virtual environment and install all dependencies:
 
 ```
 # create environment
-conda create -n py3 python=3
+conda create -n my_env python=3
 
 # activate environment
-source activate py3
+source activate my_env
 
 # install additional dependencies
 conda install --file requirements.txt 
