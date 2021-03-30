@@ -8,7 +8,7 @@ This is the README document for DeCatCounter, a Python pipeline for processing c
 
 # Usage
 
-The pipeline tool is written in Python and it can be run using a Python interpreter, like the Command Line Interface (aka the Terminal) or any other specific software (e.g. PythonWin). To run the script from the Terminal, type:
+The pipeline tool is written in Python. It can be run using a Python interpreter, like the Command Line Interface (aka the Terminal) or any other specific software (e.g. PythonWin) and can be run using any version of Python 3. To run the script from the Terminal, type:
 
 `python DeCatCounter.py input_file barcodes.txt bc_tol_f bc_tol_r constant.txt ct_tol_f ct_tol_r translation(y/n) low_len hi_len`
 
