@@ -69,7 +69,7 @@ There pipeline also creates a log file with the parameters used and a table list
 # Test dataset
 
 A mock, test dataset (test_input.fasta) is provided in the data folder, together with barcodes and constant regions text files (barcodes.txt, constant.txt).
-To run the test dataset, place all files (DeCatCounter.py, test_input.fasta, barcodes.txt and constant.txt) in the same folder and type:
+To run the test dataset, place all files (DeCatCounter.py, test_input.fasta, barcodes.txt and constant.txt) in the same folder, and from within that folder type:
 
 `python DeCatCounter.py test_input.fasta barcodes.txt 0 0 constant.txt 0 0 y 5 50`
 
