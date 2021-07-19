@@ -157,6 +157,10 @@ def main():
 	low_len = int(sys.argv[9])
 	hi_len = int(sys.argv[10])
 
+	############################################################
+	####################### ALGORITHM ##########################
+	############################################################
+
 	# read input file
 	print("")
 	recorcito_dem = []
@@ -196,7 +200,7 @@ def main():
 	for sample in samples:
 		trim_seq.append([])
 	
-	### demultiplex fwd reads
+	# demultiplex fwd reads
 	print("Processing forward reads ...")
 	print("")
 	for element in recorcito_dem:
