@@ -68,7 +68,7 @@ The pipeline will generate an output directory, called `output+date&time`. Insid
 
 There pipeline also creates a log file with the parameters used and a table listing the number of amplicons recovered after demultiplexing, and the number of sequences recovered after deconcatenation and after trimming and filtering by length.
 
-# Test dataset
+# Test dataset #1
 
 A mock, test dataset (test_input.fasta) is provided in the test_data folder, together with barcodes and constant regions text files (barcodes.txt, constant.txt).
 To run the test dataset, place all files (DeCatCounter.py, test_input.fasta, barcodes.txt and constant.txt) in the same folder, and from within that folder type:
@@ -86,7 +86,26 @@ and you should have a new folder in your directory:
 <p align="center">
   <img width="1000" src="/figures/output.png">
 </p>
-   
+
+# Test dataset #2
+
+A more realistic, test dataset (test_input_2.fasta) is provided in the test_data_2 folder, together with barcodes and constant regions text files (barcodes_2.txt, constant_2.txt). The test dataset corresponds to a subset of the raw dataset analyzed in the publication and the barcodes and constant regions are those used for the analysis.
+To run the test dataset, place all files (DeCatCounter.py, test_input_2.fasta, barcodes_2.txt and constant_2.txt) in the same folder (note that test_input_2.fasta needs to be decompressed), and from within that folder type:
+
+`python DeCatCounter.py test_input_2.fasta barcodes_2.txt 2 2 constant_2.txt 4 2 y 707 825 `
+
+If everything went well, your terminal should look like this:
+
+<p align="center">
+  <img width="400" src="/figures/test_terminal_2.png">
+</p>
+
+and you should have a new folder in your directory:
+
+<p align="center">
+  <img width="1000" src="/figures/output_2.png">
+</p>
+
 # Reporting bugs
 
 Please report any bugs to Celia Blanco (celiablanco@ucla.edu). 
